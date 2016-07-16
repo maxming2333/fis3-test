@@ -1,0 +1,189 @@
+@charset "UTF-8";
+
+// 清除浮动
+%clear {
+  *zoom: 1;
+  &:after {
+    content: " ";
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+    line-height: 0;
+  }
+}
+
+@mixin box-sizing($type: border-box) {
+  -webkit-box-sizing: #{$type};
+  -moz-box-sizing: #{$type};
+  box-sizing: #{$type};
+}
+
+@mixin border-radius($radius: 5px) {
+  -webkit-border-radius: #{$radius};
+  -moz-border-radius: #{$radius};
+  border-radius: #{$radius};
+
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+
+
+@mixin background-size($val : 100% 100%) {
+  -moz-background-size: #{$val};
+  -webkit-background-size: #{$val};
+  background-size: #{$val};
+}
+
+
+@mixin border-radiuses($topright : 0, $bottomright : 0, $bottomleft : 0, $topleft : 0) {
+  -webkit-border-top-right-radius: #{$topright};
+  -webkit-border-bottom-right-radius: #{$bottomright};
+  -webkit-border-bottom-left-radius: #{$bottomleft};
+  -webkit-border-top-left-radius: #{$topleft};
+  -moz-border-radius-topright: #{$topright};
+  -moz-border-radius-bottomright: #{$bottomright};
+  -moz-border-radius-bottomleft: #{$bottomleft};
+  -moz-border-radius-topleft: #{$topleft};
+  border-top-right-radius: #{$topright};
+  border-bottom-right-radius: #{$bottomright};
+  border-bottom-left-radius: #{$bottomleft};
+  border-top-left-radius: #{$topleft};
+
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+
+@mixin opacity($opacity : 0.5) {
+  $tempOpacity: (#{$opacity}* 100);
+  -webkit-opacity: #{$opacity};
+  -moz-opacity: #{$opacity};
+  opacity: #{$opacity};
+  filter: alpha(opacity=#{$tempOpacity});
+}
+
+@mixin animation($name, $duration : 300ms, $delay : 0, $ease : ease) {
+  -webkit-animation: #{$name} #{$duration} #{$delay} #{$ease};
+  -moz-animation: #{$name} #{$duration} #{$delay} #{$ease};
+  -ms-animation: #{$name} #{$duration} #{$delay} #{$ease};
+  animation: #{$name} #{$duration} #{$delay} #{$ease};
+}
+
+@mixin transition($transition) {
+  -webkit-transition: #{$transition};
+  -moz-transition: #{$transition};
+  -ms-transition: #{$transition};
+  -o-transition: #{$transition};
+  transition: #{$transition};
+}
+
+@mixin transform($string) {
+  -webkit-transform: #{$string};
+  -moz-transform: #{$string};
+  -ms-transform: #{$string};
+  -o-transform: #{$string};
+  transform: #{$string};
+}
+
+@mixin scale($factor) {
+  -webkit-transform: scale(#{$factor});
+  -moz-transform: scale(#{$factor});
+  -ms-transform: scale(#{$factor});
+  -o-transform: scale(#{$factor});
+  transform: scale(#{$factor});
+}
+
+@mixin rotate($deg) {
+  -webkit-transform: rotate(#{$deg});
+  -moz-transform: rotate(#{$deg});
+  -ms-transform: rotate(#{$deg});
+  -o-transform: rotate(#{$deg});
+  transform: rotate(#{$deg});
+}
+
+@mixin skew($deg, $deg2) {
+  -webkit-transform: skew(#{$deg}, #{$deg2});
+  -moz-transform: skew(#{$deg}, #{$deg2});
+  -ms-transform: skew(#{$deg}, #{$deg2});
+  -o-transform: skew(#{$deg}, #{$deg2});
+  transform: skew(#{$deg}, #{$deg2});
+}
+
+@mixin translate($x, $y:0) {
+  -webkit-transform: translate(#{$x}, #{$y});
+  -moz-transform: translate(#{$x}, #{$y});
+  -ms-transform: translate(#{$x}, #{$y});
+  -o-transform: translate(#{$x}, #{$y});
+  transform: translate(#{$x}, #{$y});
+}
+
+@mixin translate3d($x, $y: 0, $z: 0) {
+  -webkit-transform: translate3d(#{$x}, #{$y}, #{$z});
+  -moz-transform: translate3d(#{$x}, #{$y}, #{$z});
+  -ms-transform: translate3d(#{$x}, #{$y}, #{$z});
+  -o-transform: translate3d(#{$x}, #{$y}, #{$z});
+  transform: translate3d(#{$x}, #{$y}, #{$z});
+}
+
+@mixin transform-origin($x:center, $y:center) {
+  -webkit-transform-origin: #{$x} #{$y};
+  -moz-transform-origin: #{$x} #{$y};
+  -ms-transform-origin: #{$x} #{$y};
+  -o-transform-origin: #{$x} #{$y};
+  transform-origin: #{$x} #{$y};
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @-o-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin animation($arg) {
+  -moz-animation: #{$arg};
+  -webkit-animation: #{$arg};
+  -o-animation: #{$arg};
+  -ms-animation: #{$arg};
+  animation: #{$arg};
+}
+
+@function px2rem($px) {
+  @return $px / 75px * 1rem;
+}
+
+@mixin px2px($name, $px){
+  $px : $px / 1px;
+  #{$name}: round($px / 2) * 1px;
+  [data-dpr="2"] & {
+    #{$name}: $px * 1px;
+  }
+  // for mx3
+  [data-dpr="2.5"] & {
+    #{$name}: round($px * 2.5 / 2) * 1px;
+  }
+  // for 小米note
+  [data-dpr="2.75"] & {
+    #{$name}: round($px * 2.75 / 2) * 1px;
+  }
+  [data-dpr="3"] & {
+    #{$name}: round($px / 2 * 3) * 1px
+  }
+  // for 三星note4
+  [data-dpr="4"] & {
+    #{$name}: $px * 2px;
+  }
+}

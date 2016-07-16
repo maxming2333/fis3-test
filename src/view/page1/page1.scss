@@ -1,0 +1,397 @@
+@import "../../common/css/var";
+@import "../../common/css/public";
+@import "../../common/css/pop";
+
+body {
+  color: #fff;
+}
+
+@function percentage($val, $all) {
+  @return ($val / $all) * 100%;
+}
+
+.layout {
+  position: relative;
+  z-index: 10;
+}
+
+.wrap {
+  position: relative;
+  z-index: 10;
+  & > div {
+    position: relative;
+    z-index: 10;
+    & > .shade {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      z-index: 10;
+    }
+    & > img {
+      width: 100%;
+    }
+  }
+}
+
+@include keyframes(btnHappy) {
+  0% {
+    @include transform(translateX(-20%));
+  }
+  100% {
+    @include transform(translateX(20%));
+  }
+}
+
+.btn-happy {
+  display: block;
+  width: px2rem(626px);
+  height: px2rem(146px);
+  margin: 0px auto;
+  background: url("./images/btn-xs.png") no-repeat;
+  background-size: 100% 100%;
+  text-indent: -9999px;
+  overflow: hidden;
+  position: relative;
+  z-index: 5;
+
+  .btn-jt{
+    display: block;
+    width: px2rem(41px);
+    height: px2rem(31px);
+    background: url("./images/btn-jt.png") no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top: px2rem(47px);
+    right: px2rem(184px);
+    z-index: 2;
+    @include animation(btnHappy .6s ease-in-out alternate infinite);
+  }
+}
+
+.wrap-1 {
+
+  @include border-radius(0px 0px 375px 375px);
+
+  .shade-top {
+    width: 100%;
+    height: px2rem(294px);
+    background: url("./images/banner-shade-top.png") no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 2;
+  }
+
+  .shade-bottom {
+    width: 100%;
+    height: px2rem(356px);
+    background: url("./images/banner-shade-bottom.png") no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    z-index: 2;
+  }
+
+  .shade-content{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 10;
+  }
+
+  .logo {
+    display: block;
+    width: px2rem(283px);
+    height: px2rem(66px);
+    background: url("./images/logo.png") no-repeat;
+    background-size: 100% 100%;
+    text-indent: -9999px;
+    overflow: hidden;
+    position: absolute;
+    top: px2rem(26px);
+    left: px2rem(30px);
+    z-index: 10;
+  }
+
+  .btn-menu {
+    width: px2rem(64px);
+    height: px2rem(38px);
+    text-indent: -9999px;
+    background: 0px 0px url("./images/icon-hm.png") no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top: px2rem(38px);
+    right: px2rem(28px);
+    z-index: 10;
+  }
+
+  .menu-box {
+    overflow: hidden;
+    @include border-radius(px2rem(14px) 0px 0px px2rem(14px));
+    @include opacity(0);
+    position: absolute;
+    top: px2rem(12px);
+    right: 0px;
+    z-index: 2;
+    @include transition(all .3s);
+
+    &.show {
+      @include opacity(1);
+    }
+
+    .menu-bg {
+      width: 100%;
+      height: 100%;
+      background: #32d985;
+      @include opacity(0.8);
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      z-index: 1;
+    }
+    ul {
+      position: relative;
+      z-index: 10;
+      li {
+        border-top: px2rem(1px) solid #76d2a1;
+
+        &:first-child {
+          border-top: 0px;
+        }
+      }
+      span {
+        display: block;
+        height: px2rem(85px);
+      }
+      a {
+        display: block;
+        color: #ffffff;
+        @include px2px(font-size, 24px);
+        line-height: px2rem(68px);
+        padding: 0px px2rem(30px) 0px px2rem(54px);
+        opacity: 0;
+        @include transform(translateY(100%));
+        @include transition(all .3s);
+
+        &.show-up{
+          opacity: 1;
+          @include transform(translateY(0px));
+        }
+      }
+    }
+  }
+
+  .wrap-info {
+    width: 100%;
+    position: absolute;
+    bottom: px2rem(34px);
+  }
+
+  h1 {
+    text-align: center;
+    @include px2px(font-size, 60px);
+    font-weight: bold;
+    line-height: px2rem(60px);
+  }
+
+  h3 {
+    margin-top: px2rem(15px);
+    text-align: center;
+    @include px2px(font-size, 28px);
+    font-weight: normal;
+    line-height: px2rem(28px);
+  }
+}
+
+.wrap-2 {
+  .btn-happy {
+    margin-top: px2rem(38px);
+  }
+}
+
+.wrap-3 {
+  & > div {
+    width: px2rem(578px);
+    margin: px2rem(26px) auto 0;
+    position: relative;
+    z-index: 10;
+  }
+  .section-wrap {
+    width: 100%;
+    height: 100%;
+    padding-left: px2rem(48px);
+    margin-left: px2rem(-48px);
+    .section-content {
+      height: 100%;
+      margin-left: px2rem(-48px);
+    }
+  }
+  .section-content {
+    position: relative;
+    .section-left {
+      width: px2rem(78px);
+      position: absolute;
+      top: 0px;
+      bottom: 0px;
+      left: 0px;
+      z-index: 4;
+      i {
+        display: block;
+        width: px2rem(30px - 4px);
+        height: px2rem(30px - 4px);
+        margin: px2rem(20px) 0px 0px px2rem(22px);
+        border: px2rem(2px) solid #d0d0d0;
+        font-style: normal;
+        @include border-radius(100%);
+      }
+      em {
+        display: block;
+        width: 0px;
+        border-right: px2rem(1px) solid #d0d0d0;
+        font-style: normal;
+        position: absolute;
+        left: px2rem(36px);
+        top: px2rem(78px+9px);
+        bottom: px2rem(4px);
+      }
+    }
+    .section-right {
+      height: 100%;
+      margin-left: px2rem(78px);
+      position: relative;
+      z-index: 10;
+      .text {
+        margin-left: px2rem(24px);
+        color: #a1a1a1;
+        @include px2px(font-size, 26px);
+        overflow: hidden;
+        h1 {
+          display: block;
+          font-weight: normal;
+          line-height: px2rem(26px);
+          margin-top: px2rem(50px);
+          color: #0dd346;
+        }
+        h3 {
+          font-weight: normal;
+          line-height: px2rem(26px);
+          margin: px2rem(28px) 0 px2rem(14px);
+        }
+        p {
+          font-weight: normal;
+          line-height: px2rem(55px);
+        }
+      }
+      .btn-more {
+        display: block;
+        width: px2rem(60px);
+        height: px2rem(60px);
+        margin: px2rem(12px) 0 0 px2rem(20px);
+        line-height: px2rem(60px);
+        color: #fff;
+        background: #3aabfd;
+        text-align: center;
+        @include px2px(font-size, 18px);
+        @include border-radius(100%);
+      }
+      .info-img {
+        width: px2rem(578px);
+        height: px2rem(410px);
+        margin: px2rem(96px) 0 0 px2rem(-30px);
+        @include border-radius(px2rem(12px));
+        overflow: hidden;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .btn-happy {
+        margin: px2rem(30px) 0 0 px2rem(-54px);
+      }
+    }
+    .date {
+      display: block;
+      width: px2rem(120px);
+      line-height: px2rem(32px);
+      @include px2px(font-size, 32px);
+      color: #a1a1a1;
+    }
+  }
+}
+
+.section-last {
+  padding-bottom: px2rem(54px);
+  .section-content {
+    .section-left {
+      .date {
+        @include px2px(font-size, 28px);
+      }
+    }
+    .section-right {
+      margin-left: px2rem(48px);
+      .text {
+        margin-left: 0px;
+        p {
+          margin-top: px2rem(118px);
+          color: #a1a1a1;
+          text-align: center;
+          @include px2px(font-size, 32px);
+          line-height: px2rem(32px);
+        }
+      }
+      .btn-load {
+        display: block;
+        width: px2rem(580px - 4px);
+        height: px2rem(70px - 4px);
+        margin: px2rem(32px) auto 0px;
+        line-height: px2rem(70px - 4px);
+        border: px2rem(2px) solid #55e07d;
+        @include border-radius(px2rem(12px));
+        @include px2px(font-size, 24px);
+        font-weight: normal;
+        color: #0dd346;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.pop {
+  .pop-back {
+    margin-top: px2rem(80px);
+  }
+  .pop-content {
+    width: px2rem(580px);
+    margin: 0px auto;
+    overflow: hidden;
+    h3 {
+      margin: px2rem(114px) 0px px2rem(30px);
+      @include px2px(font-size, 32px);
+      font-weight: bold;
+      line-height: px2rem(32px);
+    }
+    .text {
+      height: px2rem(920px);
+      padding-top: px2rem(35px);
+      border-top: px2rem(2px) solid #61cf9a;
+      overflow: auto;
+      p:first-child {
+        margin-top: 0px;
+      }
+    }
+    p {
+      margin-top: px2rem(55px);
+      color: #fff;
+      span {
+        display: block;
+        text-indent: px2rem(50px);
+        line-height: px2rem(54px);
+        @include px2px(font-size, 24px);
+      }
+    }
+  }
+}

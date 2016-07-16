@@ -1,0 +1,105 @@
+@import "./_var";
+
+html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, p, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  margin: 0;
+  padding: 0;
+}
+
+article, aside, details, figcaption, figure, footer, header, nav, section {
+  display: block;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  overflow: hidden;
+  margin: 0px auto;
+}
+
+body, button, input, select, textarea {
+  font: 14px/normal "微软雅黑", "Microsoft YaHei", "宋体", "SimSun", "苹果丽细宋", Tahoma, Helvetica, Arial, sans-serif;
+}
+
+html {
+  height: 100%;
+  overflow: auto;
+}
+
+*:focus {
+  outline: none;
+}
+
+img {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+}
+
+html, body, fieldset, img, iframe, abbr {
+  border: 0;
+}
+
+input, a, button, select, textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+textarea {
+  resize: none;
+  overflow: auto;
+}
+
+a:focus, input:focus {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.clear:after {
+  content: ' ';
+  clear: both;
+  display: block;
+  height: 0;
+  visibility: hidden;
+  line-height: 0;
+}
+
+.clear {
+  zoom: 1
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+body {
+  background: #fff;
+  margin: 0px auto;
+  max-width: px2rem(750px);
+  position: relative;
+}

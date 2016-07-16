@@ -1,0 +1,766 @@
+@import "../../common/css/var";
+@import "../../common/css/public";
+
+body {
+  height: 100%;
+  color: #fff;
+  background: #fff;
+}
+
+@function percentage($val, $all) {
+  @return ($val / $all) * 100%;
+}
+
+.hide {
+  display: none !important;
+}
+
+.layout {
+  height: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+@include keyframes(fadeIn) {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@include keyframes(fadeOut) {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@include keyframes(nextShowUp) {
+  0% {
+    @include transform(translateY(0));
+  }
+  100% {
+    @include transform(translateY(-70%));
+  }
+}
+
+@include keyframes(nextShowDown) {
+  0% {
+    @include transform(translateY(40%));
+  }
+  100% {
+    @include transform(translateY(0));
+  }
+}
+
+@include keyframes(prevShowUp) {
+  0% {
+    @include transform(translateY(0));
+  }
+  100% {
+    @include transform(translateY(70%));
+  }
+}
+
+@include keyframes(prevShowDown) {
+  0% {
+    @include transform(translateY(-40%));
+  }
+  100% {
+    @include transform(translateY(0));
+  }
+}
+
+.fade-in {
+  @include animation(fadeIn .6s ease-in-out forwards);
+}
+
+.fade-out {
+  @include animation(fadeOut 1s ease-in-out forwards);
+}
+
+.wrap {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+
+  & > .shade {
+    width: 100%;
+    height: 0;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 20;
+  }
+
+  & > .wp-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 10;
+    & > .page {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 3;
+      overflow: hidden;
+      @include transform(translateY(100%));
+
+      &:first-child {
+        z-index: 10;
+        @include transform(translateY(0));
+      }
+
+      &.move-next.fade-out > img {
+        @include animation(nextShowUp .6s ease-in-out forwards);
+      }
+
+      &.move-next.fade-in > img {
+        @include animation(nextShowDown .6s ease-in-out forwards);
+      }
+
+      &.move-prev.fade-out > img {
+        @include animation(prevShowUp .6s ease-in-out forwards);
+      }
+
+      &.move-prev.fade-in > img {
+        @include animation(prevShowDown .6s ease-in-out forwards);
+      }
+
+      & > .shade {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: 10;
+        background: url("./images/shade-bottom-bg.png") no-repeat bottom center;
+      }
+      & > img {
+        width: 100%;
+        min-height: 100%;
+        margin-top: px2rem(-1335px / 2);
+        position: absolute;
+        top: 50%;
+      }
+    }
+  }
+}
+
+@include keyframes(moveNext) {
+  0% {
+    opacity: 0;
+    @include transform(translateY(px2rem(-15px)));
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    @include transform(translateY(px2rem(10px)));
+  }
+}
+
+.shade {
+  .shade-top {
+    width: 100%;
+    height: px2rem(458px);
+    background: 0px 0px url("./images/top.png") no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+    z-index: 10;
+
+    &.shade-top-black {
+      height: px2rem(140px);
+      background: rgba(33, 33, 33, .95);
+      position: relative;
+      z-index: 10;
+    }
+
+    .text {
+      float: left;
+      margin: px2rem(18px) 0px 0px px2rem(20px);
+      line-height: px2rem(50px);
+      @include px2px(font-size, 28px);
+      color: #32d985;
+    }
+    .btn-join {
+      float: right;
+      display: block;
+      width: px2rem(260px);
+      height: px2rem(80px);
+      margin: px2rem(30px) px2rem(22px) 0px 0px;
+      background: 0px 0px url("./images/btn-join.png") no-repeat;
+      background-size: 100% 100%;
+      text-indent: -9999px;
+      overflow: hidden;
+    }
+  }
+  .shade-bottom {
+    width: 100%;
+    background-size: 100% auto;
+    padding-bottom: px2rem(20px);
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    .text {
+      height: px2rem(132px);
+      overflow: hidden;
+      position: relative;
+      & > span {
+        float: left;
+        width: px2rem(130px - 2px);
+        height: px2rem(130px - 4px);
+        line-height: px2rem(130px - 4px);
+        border: px2rem(2px) solid rgba(107, 223, 179, .3);
+        border-left: 0px;
+        @include border-radius(0px px2rem(18px) px2rem(18px) 0px);
+        text-align: center;
+        color: rgba(255, 255, 255, .5);
+        @include px2px(font-size, 88px);
+        font-weight: bold;
+        position: relative;
+        z-index: 10;
+      }
+      .text-content {
+        height: 100%;
+        margin-left: px2rem(130px + 28px);
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        span {
+          display: block;
+          padding-right: px2rem(10px);
+          margin: px2rem(2px) 0px px2rem(10px) 0px;
+          color: #fff;
+          @include px2px(font-size, 28px);
+          line-height: px2rem(28px);
+          font-weight: bold;
+        }
+        p {
+          display: block;
+          padding-right: px2rem(10px);
+          @include px2px(font-size, 28px);
+          line-height: px2rem(48px);
+          font-weight: normal;
+        }
+      }
+    }
+    .btn-next {
+      display: block;
+      width: px2rem(70px);
+      height: px2rem(36px);
+      margin: px2rem(14px) auto 0px;
+      background: 0px 0px url("./images/btn-next.png") no-repeat;
+      background-size: 100% 100%;
+      text-indent: -9999px;
+      overflow: hidden;
+      @include animation(moveNext 1.8s ease infinite);
+    }
+  }
+}
+
+@include keyframes(circle) {
+  0% {
+    opacity: 1;
+    @include transform(rotate(0deg));
+  }
+  40% {
+    opacity: .2;
+    @include transform(rotate(180deg));
+  }
+  100% {
+    opacity: 1;
+    @include transform(rotate(360deg));
+  }
+}
+
+@include keyframes(popo) {
+  0% {
+    opacity: 1;
+    @include transform(scale(1, 1));
+  }
+  100% {
+    opacity: .4;
+    @include transform(scale(1.4, 1.4));
+  }
+}
+
+.page-cover {
+  .shade-bg {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .6);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 50;
+  }
+  .shade-video {
+    width: px2rem(700px);
+    height: px2rem(394px);
+    margin: px2rem(-394px / 2) 0px 0px px2rem(-700px / 2);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 100;
+  }
+  .btn-video {
+    display: block;
+    width: px2rem(134px);
+    height: px2rem(134px);
+    margin-left: px2rem(-134px / 2);
+    position: absolute;
+    left: 50%;
+    bottom: px2rem(234px - 20px);
+
+    b {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: url("images/btn-video-1.png") no-repeat;
+      background-size: 100% 100%;
+      @include animation(circle 2s linear infinite);
+    }
+
+    em {
+      display: block;
+      width: px2rem(33px);
+      height: px2rem(41px);
+      background: url("./images/btn-video-2.png") no-repeat;
+      background-size: 100% 100%;
+      position: absolute;
+      top: px2rem(48px);
+      left: px2rem(56px);
+      z-index: 10;
+      @include animation(popo 1s ease-in-out alternate infinite);
+    }
+  }
+  .shade-bottom .text .text-content {
+    margin-left: 0px;
+    h3 {
+      height: px2rem(60px);
+      @include px2px(font-size, 60px);
+      font-weight: bold;
+      text-align: center;
+    }
+    p {
+      height: px2rem(28px);
+      margin-top: 14px;
+      @include px2px(font-size, 28px);
+      text-align: center;
+    }
+  }
+}
+
+.page-friend, .page-join {
+  .shade {
+    .shade-content {
+      width: 100%;
+      background: url("../../common/images/pop-bg.png") repeat;
+      padding-top: px2rem(140px);
+      position: absolute;
+      top: 0px;
+      bottom: 0px;
+      z-index: 5;
+      h3 {
+        margin-top: px2rem(60px);
+        text-align: center;
+        line-height: px2rem(40px);
+        @include px2px(font-size, 40px);
+        font-weight: bold;
+        color: #fff;
+      }
+      .text {
+        width: px2rem(582px);
+        margin: px2rem(30px) auto 0px;
+        border-top: px2rem(2px) solid rgba(107, 223, 179, .3);
+        padding-top: px2rem(18px);
+        p {
+          text-indent: px2rem(50px);
+          line-height: px2rem(56px);
+          @include px2px(font-size, 24px);
+        }
+      }
+      .btn-join {
+        display: block;
+        width: px2rem(582px - 4px);
+        height: px2rem(76px);
+        margin: px2rem(38px) auto 0px;
+        line-height: px2rem(76px);
+        text-align: center;
+        color: #fff;
+        @include px2px(font-size, 28px);
+        border: px2rem(2px) solid #fff;
+        @include border-radius(px2rem(14px));
+      }
+      .bottom-info {
+        margin-top: px2rem(72px);
+        span {
+          display: block;
+          @include px2px(font-size, 24px);
+          line-height: px2rem(24px);
+          color: #fff;
+          text-align: center;
+        }
+        .code-img {
+          margin-top: px2rem(24px);
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+.page-friend {
+  .shade {
+    .shade-content {
+      h3 {
+        margin-top: px2rem(80px);
+      }
+      .banner-box {
+        width: px2rem(500px);
+        height: px2rem(290px);
+        margin: px2rem(38px) auto 0px;
+        position: relative;
+      }
+      .swiper-container {
+        width: 100%;
+        height: 100%;
+        .swiper-wrapper {
+          width: 100%;
+          height: 100%;
+        }
+        .swiper-slide {
+          width: 50%;
+          .ban-content {
+            width: px2rem(202px + 16px);
+            height: px2rem(202px + 16px);
+            margin: 0px auto;
+          }
+          span {
+            display: block;
+            margin-top: px2rem(14px);
+            color: #fff;
+            @include px2px(font-size, 28px);
+            line-height: px2rem(28px);
+            text-align: center;
+          }
+          .ban-img-box {
+            width: px2rem(202px);
+            height: px2rem(202px);
+            border: px2rem(8px) solid rgba(107, 223, 179, .1);
+            @include border-radius(100%);
+          }
+          .ban-img {
+            width: px2rem(192px);
+            height: px2rem(192px);
+            border: px2rem(5px) solid #fff;
+            @include border-radius(100%);
+            overflow: hidden;
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+      }
+      .swiper-button-prev {
+        width: px2rem(82px);
+        height: px2rem(82px);
+        background: url("./images/btn-swiper-prev.png") no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        top: px2rem(84px);
+        left: px2rem(-82px);
+      }
+      .swiper-button-next {
+        width: px2rem(82px);
+        height: px2rem(82px);
+        background: url("./images/btn-swiper-next.png") no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        top: px2rem(84px);
+        right: px2rem(-82px);
+      }
+      .bottom-info {
+        width: px2rem(580px);
+        margin: px2rem(90px) auto 0px;
+        overflow: hidden;
+        & > span {
+          display: block;
+          width: 150%;
+          position: relative;
+          & > * {
+            float: left;
+          }
+          em {
+            margin: 0px px2rem(20px);
+            @include px2px(font-size, 28px);
+            color: #fff;
+            font-style: normal;
+          }
+          i {
+            display: block;
+            width: px2rem(220px);
+            height: 0px;
+            border-top: px2rem(2px) solid rgba(107, 223, 179, .3);
+            font-style: normal;
+            position: relative;
+            top: px2rem(10px);
+          }
+        }
+        .logo-img {
+          width: 100%;
+          margin-top: px2rem(26px);
+          img {
+            width: 100%;
+          }
+        }
+        .btn-jg {
+          display: block;
+          width: px2rem(580px - 4px);
+          height: px2rem(76px - 4px);
+          border: px2rem(2px) solid #fff;
+          @include border-radius(px2rem(14px));
+          text-align: center;
+          line-height: px2rem(76px - 4px);
+          margin: px2rem(28px) auto 0px;
+          color: #fff;
+          @include px2px(font-size, 24px);
+        }
+      }
+    }
+  }
+}
+
+.page-like, .page-share {
+  .shade {
+    .shade-content {
+      width: 100%;
+      position: absolute;
+      top: px2rem(140px);
+      bottom: 0px;
+      z-index: 50;
+      .btn-close, .icon-share, .share-content, .share-bg {
+        opacity: 0;
+      }
+      &.anm {
+        .btn-close, .icon-share, .share-content, .share-bg {
+          @include animation(share-open .7s ease-in-out forwards);
+        }
+      }
+      &.out-anm {
+        .btn-close, .icon-share, .share-content, .share-bg {
+          @include animation(share-close .5s ease-in-out forwards);
+        }
+      }
+    }
+    .share-box {
+      width: px2rem(490px);
+      height: px2rem(490px);
+      margin: px2rem(270px) 0px 0px percentage(147px, 750px);
+      position: relative;
+      .btn-close {
+        display: block;
+        width: px2rem(100px);
+        height: px2rem(100px);
+        background: url("./images/btn-share-close.png") no-repeat;
+        background-size: 100% 100%;
+        text-indent: -9999px;
+        overflow: hidden;
+        position: absolute;
+        top: px2rem(32px);
+        right: px2rem(-66px);
+        z-index: 5;
+      }
+      .share-content {
+        width: px2rem(490px);
+        margin-left: 0px;
+        text-align: center;
+        overflow: hidden;
+        position: relative;
+        top: 0px;
+        left: 0px;
+        z-index: 10;
+      }
+      p {
+        margin-top: px2rem(152px);
+        @include px2px(font-size, 32px);
+        line-height: px2rem(32px);
+      }
+      span {
+        display: block;
+        margin-top: px2rem(46px);
+        @include px2px(font-size, 32px);
+        font-weight: bold;
+      }
+    }
+    .share-bg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: url("./images/btn-like-2.png") no-repeat;
+      background-size: 100% 100%;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      z-index: 1;
+    }
+    .icon-share {
+      display: block;
+      width: px2rem(213px);
+      height: px2rem(213px);
+      background: url("./images/btn-like-1.png") no-repeat;
+      background-size: 100% 100%;
+      position: absolute;
+      left: px2rem(-65px);
+      bottom: 0px;
+      z-index: 5;
+    }
+  }
+}
+
+@include keyframes(likeNum) {
+  0% {
+    opacity: 0.8;
+    @include transform(translateY(0px));
+  }
+  100% {
+    opacity: 0;
+    @include transform(translateY(px2rem(-20px)));
+  }
+}
+
+@include keyframes(share-open) {
+  0% {
+    opacity: 0;
+    @include transform(scale(0, 0));
+  }
+  60% {
+    opacity: 1;
+    @include transform(scale(1.2, 1.2));
+  }
+  80% {
+    @include transform(scale(.9, .9));
+  }
+  100% {
+    opacity: 1;
+    @include transform(scale(1, 1));
+  }
+}
+
+@include keyframes(share-close) {
+  0% {
+    opacity: 1;
+    @include transform(scale(1, 1));
+  }
+  100% {
+    opacity: 0;
+    @include transform(scale(0, 0));
+  }
+}
+
+.page-like {
+  .shade {
+    .share-box {
+      .like-num {
+        height: px2rem(73px);
+        margin-top: px2rem(76px);
+        line-height: px2rem(73px);
+        text-align: center;
+        position: relative;
+        z-index: 10;
+
+        &.disable {
+          i {
+            background-image: url("./images/btn-like-before.png?__sprite=btn_like");
+          }
+          em {
+            @include animation(likeNum 1s ease forwards);
+          }
+        }
+
+        i {
+          display: inline-block;
+          width: px2rem(73px);
+          height: 100%;
+          background: 0px 50% url("./images/btn-like.png?__sprite=btn_like") no-repeat;
+          background-size: 100% 100%;
+          vertical-align: middle;
+        }
+        span {
+          display: inline-block;
+          max-width: px2rem(278px);
+          margin: 0px 0px 0px px2rem(10px);
+          @include px2px(font-size, 64px);
+          white-space: nowrap;
+          font-weight: bold;
+          overflow: hidden;
+          vertical-align: middle;
+        }
+        em {
+          display: block;
+          @include px2px(font-size, 48px);
+          line-height: px2rem(48px);
+          font-weight: bold;
+          font-style: normal;
+          opacity: 0;
+          color: #fff;
+          position: absolute;
+          top: px2rem(-46px);
+          left: percentage(252px, 490px);
+        }
+      }
+      p {
+        margin-top: px2rem(42px);
+      }
+    }
+  }
+  .btn-like {
+    display: block;
+    width: px2rem(320px - 4px);
+    height: px2rem(76px - 4px);
+    border: px2rem(2px) solid #fff;
+    @include border-radius(px2rem(14px));
+    text-align: center;
+    line-height: px2rem(76px - 4px);
+    margin: px2rem(34px) auto 0px;
+    color: #fff;
+    @include px2px(font-size, 28px);
+
+    &.disable {
+      color: rgba(255, 255, 255, .5);
+      border-color: rgba(255, 255, 255, .4);
+    }
+  }
+}
+
+.page-share {
+  .shade .share-box {
+    .icon-share {
+      background: url("./images/btn-share-1.png") no-repeat;
+      background-size: 100% 100%;
+    }
+  }
+  .btn-join {
+    display: block;
+    width: px2rem(320px - 4px);
+    height: px2rem(76px - 4px);
+    border: px2rem(2px) solid #fff;
+    @include border-radius(px2rem(14px));
+    text-align: center;
+    line-height: px2rem(76px - 4px);
+    margin: px2rem(52px) auto 0px;
+    color: #fff;
+    @include px2px(font-size, 28px);
+  }
+}
