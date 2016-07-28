@@ -19,51 +19,57 @@
   <meta name="renderer" content="webkit">
   <meta name="keywords" content="关键词">
   <meta name="description" content="网站简介">
-  <meta name="apple-mobile-web-app-title" content="夏令营">
-  <title>夏令营</title>
+  <meta name="apple-mobile-web-app-title" content="【豆沙包】夏令营の成长日志">
+  <meta name="x-share-title" content="【豆沙包】夏令营の成长日志">
+  <meta name="x-share-content" content="【豆沙包】夏令营の成长日志<br/>2016年夏天，我在菁果夏令营の欢乐时光......">
+  <meta name="x-share-images" data-img="./images/1/demo/3.jpg">
+  <title>【豆沙包】夏令营の成长日志</title>
 
   <script type="text/javascript">
-    ~function (win, doc) {
-      var dpr, rem, scale;
-      var docEl = doc.documentElement;
-      var metaEl = doc.querySelector('meta[name="viewport"]');
+    (function(doc, win) {
+      var docEl = doc.documentElement,
+          resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+          recalc = function() {
+            var clientWidth = docEl.clientWidth;
+            if (!clientWidth) return;
+            docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+          };
 
-      dpr = win.devicePixelRatio || 1;
-      rem = docEl.clientWidth * dpr / 10;
-      scale = 1 / dpr;
+      recalc();
 
-
-      // 设置viewport，进行缩放，达到高清效果
-      metaEl.setAttribute('content', 'width=' + dpr * docEl.clientWidth + ', initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
-
-      // 设置data-dpr属性，留作的css hack之用
-      docEl.setAttribute('data-dpr', dpr);
-
-      // 动态写入样式
-      docEl.style.fontSize = rem + 'px';
-    }(window, document);
+      if (!doc.addEventListener) return;
+      win.addEventListener(resizeEvt, recalc, false);
+      doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
   </script><!--ignore-->
 
-  <link rel="stylesheet" type="text/css" href="../../plugin/swiper/swiper-3.3.1.min.css">
-  <link rel="stylesheet" type="text/css" href="page2.scss">
+  <link rel="stylesheet" type="text/css" href="../../../plugin/swiper/swiper-3.3.1.min.css">
+  <link rel="stylesheet" type="text/css" href="../../common/page/page.scss">
 </head>
 <body>
+<div style="display: none;">
+  <h3>2016年夏天，我在菁果夏令营の欢乐时光......</h3>
+  <img alt="分享图片" src="images/1/demo/3.jpg">
+</div>
 <div class="layout">
   <div class="wrap">
+    <a class="btn-music btn-music-anm" href="javascript:;" data-src="./data/lemon-tree.mp3">
+      <span></span>
+    </a>
     <div class="shade">
       <div class="shade-top">
         <div class="text">
           <span>下期预告：</span>
-          <p>2016年3月5日&nbsp;&nbsp;游泳自救</p>
+          <p>8月7日&nbsp;&nbsp;上海美式综合营</p>
         </div>
-        <a class="btn-join" href="javascript:;">立即报名</a>
+        <a class="btn-join" href="http://m.jinglecamps.icoc.in/col.jsp?id=108">立即报名</a>
       </div>
     </div>
     <div class="wp-inner H5FullscreenPage-wrap">
       <div class="item page page-cover">
-        <img src="./images/dsb/2.jpg">
+        <img src="images/1/2.jpg">
         <div class="shade">
-          <a class="shade-video-src hide" data-url="./images/demo/trailer.mp4"></a>
+          <a class="shade-video-src hide" data-url="./data/trailer.mp4"></a>
           <div class="shade-bottom">
             <span class="btn-video"><b></b><em></em></span>
             <div class="text clear">
@@ -79,7 +85,7 @@
 
       <!-- 人物日记 开始 -->
       <div class="item page">
-        <img src="./images/dsb/1.jpg">
+        <img src="images/1/1.jpg">
         <div class="shade">
           <div class="shade-bottom">
             <div class="text clear">
@@ -94,7 +100,7 @@
         </div>
       </div>
       <div class="item page">
-        <img src="./images/dsb/2.jpg">
+        <img src="images/1/2.jpg">
         <div class="shade">
           <div class="shade-bottom">
             <div class="text clear">
@@ -109,7 +115,7 @@
         </div>
       </div>
       <div class="item page">
-        <img src="./images/dsb/3.jpg">
+        <img src="images/1/3.jpg">
         <div class="shade">
           <div class="shade-bottom">
             <div class="text clear">
@@ -124,7 +130,7 @@
         </div>
       </div>
       <div class="item page">
-        <img src="./images/dsb/4.jpg">
+        <img src="images/1/4.jpg">
         <div class="shade">
           <div class="shade-bottom">
             <div class="text clear">
@@ -139,7 +145,7 @@
         </div>
       </div>
       <div class="item page">
-        <img src="./images/dsb/5.jpg">
+        <img src="images/1/5.jpg">
         <div class="shade">
           <div class="shade-bottom">
             <div class="text clear">
@@ -154,7 +160,7 @@
         </div>
       </div>
       <div class="item page">
-        <img src="./images/dsb/6.jpg">
+        <img src="images/1/6.jpg">
         <div class="shade">
           <div class="shade-bottom">
             <div class="text clear">
@@ -169,7 +175,7 @@
         </div>
       </div>
       <div class="item page">
-        <img src="./images/dsb/7.jpg">
+        <img src="images/1/7.jpg">
         <div class="shade">
           <div class="shade-bottom">
             <div class="text clear">
@@ -184,7 +190,7 @@
         </div>
       </div>
       <div class="item page">
-        <img src="./images/dsb/8.jpg">
+        <img src="images/1/8.jpg">
         <div class="shade">
           <div class="shade-bottom">
             <div class="text clear">
@@ -199,7 +205,7 @@
         </div>
       </div>
       <div class="item page">
-        <img src="./images/dsb/9.jpg">
+        <img src="images/1/9.jpg">
         <div class="shade">
           <div class="shade-bottom">
             <div class="text clear">
@@ -214,7 +220,7 @@
         </div>
       </div>
       <div class="item page">
-        <img src="./images/dsb/10.jpg">
+        <img src="images/1/10.jpg">
         <div class="shade">
           <div class="shade-bottom">
             <div class="text clear">
@@ -229,7 +235,7 @@
         </div>
       </div>
       <div class="item page">
-        <img src="./images/dsb/11.jpg">
+        <img src="images/1/11.jpg">
         <div class="shade">
           <div class="shade-bottom">
             <div class="text clear">
@@ -244,7 +250,7 @@
         </div>
       </div>
       <div class="item page">
-        <img src="./images/dsb/12.jpg">
+        <img src="images/1/12.jpg">
         <div class="shade">
           <div class="shade-bottom">
             <div class="text clear">
@@ -259,7 +265,7 @@
         </div>
       </div>
       <div class="item page">
-        <img src="./images/dsb/13.jpg">
+        <img src="images/1/13.jpg">
         <div class="shade">
           <div class="shade-bottom">
             <div class="text clear">
@@ -276,14 +282,14 @@
       <!-- 人物日记 结束 -->
 
 
-      <div class="item page page-like">
-        <img src="./images/dsb/1.jpg">
+      <div class="item page page-like hide">
+        <img src="images/1/1.jpg">
         <div class="shade">
           <div class="shade-content">
             <div class="share-box">
               <a class="btn-close" href="javascript:;">关闭</a>
               <div class="share-bg"></div>
-              <div class="share-content">
+              <div class="share-content share-content-default">
                 <div class="like-num clear">
                   <i></i>
                   <span>0</span>
@@ -295,10 +301,32 @@
               <div class="icon-share"></div>
             </div>
           </div>
+          <div class="shade-bottom">
+            <a class="btn-next" href="javascript:;">下一页</a>
+          </div>
+        </div>
+      </div>
+      <div class="item page page-share" data-page-type="hide">
+        <img src="images/1/1.jpg">
+        <div class="shade">
+          <div class="shade-content">
+            <div class="share-box disable">
+              <a class="btn-close" href="javascript:;">关闭</a>
+              <div class="share-bg"></div>
+              <div class="share-content share-content-default">
+                <span>棒棒哒</span>
+                <p>喜欢我就把我分享出去吧！</p>
+              </div>
+              <div class="icon-share"></div>
+            </div>
+          </div>
+          <div class="shade-bottom">
+            <a class="btn-next" href="javascript:;">下一页</a>
+          </div>
         </div>
       </div>
       <div class="item page page-friend" data-shade-top="black">
-        <img src="./images/dsb/2.jpg">
+        <img src="images/1/2.jpg">
         <div class="shade">
           <div class="shade-content">
             <h3>我的小伙伴</h3>
@@ -309,7 +337,7 @@
                     <div class="ban-content">
                       <div class="ban-img-box">
                         <div class="ban-img">
-                          <img src="images/demo/3.jpg">
+                          <img src="images/1/demo/3.jpg">
                         </div>
                       </div>
                       <span>豆沙包</span>
@@ -319,7 +347,7 @@
                     <div class="ban-content">
                       <div class="ban-img-box">
                         <div class="ban-img">
-                          <img src="images/demo/4.jpg">
+                          <img src="images/1/demo/4.jpg">
                         </div>
                       </div>
                       <span>豆沙包</span>
@@ -329,7 +357,7 @@
                     <div class="ban-content">
                       <div class="ban-img-box">
                         <div class="ban-img">
-                          <img src="images/demo/4.jpg">
+                          <img src="images/1/demo/4.jpg">
                         </div>
                       </div>
                       <span>豆沙包</span>
@@ -339,7 +367,7 @@
                     <div class="ban-content">
                       <div class="ban-img-box">
                         <div class="ban-img">
-                          <img src="images/demo/3.jpg">
+                          <img src="images/1/demo/3.jpg">
                         </div>
                       </div>
                       <span>豆沙包</span>
@@ -353,7 +381,7 @@
             <div class="bottom-info">
               <span class="clear"><i></i><em>我们都在</em><i></i></span>
               <div class="logo-img">
-                <img src="./images/logo-big.png">
+                <img src="../../common/page/images/logo-big.png">
               </div>
               <a class="btn-jg" href="javascript:;">了解菁果</a>
             </div>
@@ -361,37 +389,19 @@
         </div>
       </div>
       <div class="item page page-join" data-shade-top="black">
-        <img src="./images/dsb/2.jpg">
+        <img src="images/1/2.jpg">
         <div class="shade">
           <div class="shade-content">
             <h3>关于菁果夏令营</h3>
             <div class="text clear">
-              <p>不同种类的夏令营提供不同种类活动，例如有些提供户外拓展训练，以训练体能和团队精神；有些则提供语言、艺术、音乐等的训练。</p>
-              <p>大多数的夏令营是由教育机关所赞助，然而现今越来越多私人单位去举办营队活动地区的小孩们参与。</p>
+              <p>今年夏天，广州、北京、上海多地同时开营，多种精彩主题营陪孩子度过一个充满欢乐、礼物和爱的夏天！报名持续中......</p>
             </div>
-            <a class="btn-join" href="javascript:;">立即报名</a>
+            <a class="btn-join" href="http://m.jinglecamps.icoc.in/col.jsp?id=108">立即报名</a>
             <div class="bottom-info">
               <span>了解更多精彩详情，关注公众号“菁果夏令营”</span>
               <div class="code-img">
-                <img src="./images/code-img.png">
+                <img src="../../common/page/images/qr.jpg" alt="qrcode">
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="item page page-share">
-        <img src="./images/dsb/1.jpg">
-        <div class="shade">
-          <div class="shade-content">
-            <div class="share-box">
-              <a class="btn-close" href="javascript:;">关闭</a>
-              <div class="share-bg"></div>
-              <div class="share-content">
-                <p>喜欢我就把我分享出去吧！</p>
-                <a class="btn-join" href="javascript:;">报名成功</a>
-                <span>棒棒哒</span>
-              </div>
-              <div class="icon-share"></div>
             </div>
           </div>
         </div>
@@ -400,13 +410,14 @@
   </div>
 </div>
 </body>
-<script data-loader="true" type="text/javascript" src="../../common/js/lib/mod.js"></script>
-<script data-framework="true" type="text/javascript" src="../../common/js/lib/zepto.min.js"></script>
-<script data-framework="true" type="text/javascript" src="../../common/js/lib/touch.js"></script>
-<script type="text/javascript" src="../../plugin/fingerprint2/fingerprint2.min.js"></script>
-<script type="text/javascript" src="../../plugin/swiper/swiper-3.3.1.jquery.min.js"></script>
-<script type="text/javascript" src="../../plugin/fullPage/zepto.fullpage.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script data-loader="true" type="text/javascript" src="../../../common/js/lib/mod.js"></script>
+<script data-framework="true" type="text/javascript" src="../../../common/js/lib/zepto.min.js"></script>
+<script data-framework="true" type="text/javascript" src="../../../common/js/lib/touch.js"></script>
+<script type="text/javascript" src="../../../plugin/fingerprint2/fingerprint2.min.js"></script>
+<script type="text/javascript" src="../../../plugin/swiper/swiper-3.3.1.jquery.min.js"></script>
+<script type="text/javascript" src="../../../plugin/fullPage/zepto.fullpage.js"></script>
 <script type="text/javascript">
-  require('./page2');
+  require('./../../common/page/page');
 </script>
 </html>

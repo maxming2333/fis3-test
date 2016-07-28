@@ -1,5 +1,5 @@
-@import "../../common/css/var";
-@import "../../common/css/public";
+@import "../../../common/css/var";
+@import "../../../common/css/public";
 
 body {
   height: 100%;
@@ -83,11 +83,45 @@ body {
   @include animation(fadeOut 1s ease-in-out forwards);
 }
 
+@include keyframes(rotate_ani) {
+  0%,100% {
+    -webkit-transform: rotate(0deg)
+  }
+  100% {
+    -webkit-transform: rotate(360deg)
+  }
+}
+
 .wrap {
   height: 100%;
   overflow: hidden;
   position: relative;
   z-index: 10;
+
+  .btn-music{
+    width: px2rem(100px);
+    height: px2rem(100px);
+    position: absolute;
+    top: px2rem(160px);
+    right: 0px;
+    z-index: 100;
+    overflow: hidden;
+
+    &.btn-music-anm{
+      span{
+        @include animation(rotate_ani 1.2s linear infinite both);
+      }
+    }
+
+    span{
+      display: block;
+      width: px2rem(54px);
+      height: px2rem(54px);
+      margin: px2rem(20px) 0px 0px px2rem(20px);
+      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAA2CAYAAACMRWrdAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpkZjgzYzFlZi00ZjUyLWI0NGUtOTFjZi0zMmY5ZWM3NzQ4NmYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6Q0IzRDZBNjNFNDM4MTFFNUFEMzY5Q0EwQjhGODQ3QjEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6Q0IzRDZBNjJFNDM4MTFFNUFEMzY5Q0EwQjhGODQ3QjEiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6N2FkMTdkZjYtNGU2Ny1jYzQ4LTlmZWItYWIxMzc1NjIzYWQ1IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOmRmODNjMWVmLTRmNTItYjQ0ZS05MWNmLTMyZjllYzc3NDg2ZiIv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) no-repeat;
+      background-size: 100% 100%;
+    }
+  }
 
   & > .shade {
     width: 100%;
@@ -141,7 +175,8 @@ body {
         top: 0px;
         left: 0px;
         z-index: 10;
-        background: url("./images/shade-bottom-bg.png") no-repeat bottom center;
+        background: url("images/shade-bottom-bg.png") no-repeat bottom center;
+        background-size: 100% auto;
       }
       & > img {
         width: 100%;
@@ -172,7 +207,7 @@ body {
   .shade-top {
     width: 100%;
     height: px2rem(458px);
-    background: 0px 0px url("./images/top.png") no-repeat;
+    background: 0px 0px url("images/top.png") no-repeat;
     background-size: 100% 100%;
     position: relative;
     z-index: 10;
@@ -197,7 +232,7 @@ body {
       width: px2rem(260px);
       height: px2rem(80px);
       margin: px2rem(30px) px2rem(22px) 0px 0px;
-      background: 0px 0px url("./images/btn-join.png") no-repeat;
+      background: 0px 0px url("images/btn-join.png") no-repeat;
       background-size: 100% 100%;
       text-indent: -9999px;
       overflow: hidden;
@@ -259,7 +294,7 @@ body {
       width: px2rem(70px);
       height: px2rem(36px);
       margin: px2rem(14px) auto 0px;
-      background: 0px 0px url("./images/btn-next.png") no-repeat;
+      background: 0px 0px url("images/btn-next.png") no-repeat;
       background-size: 100% 100%;
       text-indent: -9999px;
       overflow: hidden;
@@ -314,7 +349,7 @@ body {
     z-index: 100;
   }
   .btn-video {
-    display: block;
+    display: none;
     width: px2rem(134px);
     height: px2rem(134px);
     margin-left: px2rem(-134px / 2);
@@ -335,7 +370,7 @@ body {
       display: block;
       width: px2rem(33px);
       height: px2rem(41px);
-      background: url("./images/btn-video-2.png") no-repeat;
+      background: url("images/btn-video-2.png") no-repeat;
       background-size: 100% 100%;
       position: absolute;
       top: px2rem(48px);
@@ -343,6 +378,9 @@ body {
       z-index: 10;
       @include animation(popo 1s ease-in-out alternate infinite);
     }
+  }
+  .shade-bottom .text{
+    margin-bottom: px2rem(80px);
   }
   .shade-bottom .text .text-content {
     margin-left: 0px;
@@ -354,7 +392,8 @@ body {
     }
     p {
       height: px2rem(28px);
-      margin-top: 14px;
+      // margin-top: px2rem(14px);
+      margin-top: px2rem(25px);
       @include px2px(font-size, 28px);
       text-align: center;
     }
@@ -365,7 +404,7 @@ body {
   .shade {
     .shade-content {
       width: 100%;
-      background: url("../../common/images/pop-bg.png") repeat;
+      background: url("../../../common/images/pop-bg.png") repeat;
       padding-top: px2rem(140px);
       position: absolute;
       top: 0px;
@@ -412,8 +451,19 @@ body {
           text-align: center;
         }
         .code-img {
-          margin-top: px2rem(24px);
+          width: px2rem(300px);
+          height: px2rem(309px);
+          background: url("images/qr-img-bg.png") no-repeat;
+          background-size: 100% 100%;
+          margin: px2rem(24px) auto 0px;
           text-align: center;
+          overflow: hidden;
+
+          img{
+            width: px2rem(240px);
+            height: px2rem(240px);
+            margin-top: px2rem(24px);
+          }
         }
       }
     }
@@ -476,7 +526,7 @@ body {
       .swiper-button-prev {
         width: px2rem(82px);
         height: px2rem(82px);
-        background: url("./images/btn-swiper-prev.png") no-repeat;
+        background: url("images/btn-swiper-prev.png") no-repeat;
         background-size: 100% 100%;
         position: absolute;
         top: px2rem(84px);
@@ -485,7 +535,7 @@ body {
       .swiper-button-next {
         width: px2rem(82px);
         height: px2rem(82px);
-        background: url("./images/btn-swiper-next.png") no-repeat;
+        background: url("images/btn-swiper-next.png") no-repeat;
         background-size: 100% 100%;
         position: absolute;
         top: px2rem(84px);
@@ -494,7 +544,6 @@ body {
       .bottom-info {
         width: px2rem(580px);
         margin: px2rem(90px) auto 0px;
-        overflow: hidden;
         & > span {
           display: block;
           width: 150%;
@@ -569,11 +618,12 @@ body {
       height: px2rem(490px);
       margin: px2rem(270px) 0px 0px percentage(147px, 750px);
       position: relative;
+
       .btn-close {
         display: block;
         width: px2rem(100px);
         height: px2rem(100px);
-        background: url("./images/btn-share-close.png") no-repeat;
+        background: url("images/btn-share-close.png") no-repeat;
         background-size: 100% 100%;
         text-indent: -9999px;
         overflow: hidden;
@@ -581,6 +631,10 @@ body {
         top: px2rem(32px);
         right: px2rem(-66px);
         z-index: 5;
+      }
+      .share-content-disable{
+        display: none;
+        padding-top: px2rem(120px);
       }
       .share-content {
         width: px2rem(490px);
@@ -593,7 +647,7 @@ body {
         z-index: 10;
       }
       p {
-        margin-top: px2rem(152px);
+        margin-top: px2rem(42px);
         @include px2px(font-size, 32px);
         line-height: px2rem(32px);
       }
@@ -608,7 +662,7 @@ body {
       display: block;
       width: 100%;
       height: 100%;
-      background: url("./images/btn-like-2.png") no-repeat;
+      background: url("images/btn-like-2.png") no-repeat;
       background-size: 100% 100%;
       position: absolute;
       top: 0px;
@@ -619,7 +673,7 @@ body {
       display: block;
       width: px2rem(213px);
       height: px2rem(213px);
-      background: url("./images/btn-like-1.png") no-repeat;
+      background: url("images/btn-like-1.png") no-repeat;
       background-size: 100% 100%;
       position: absolute;
       left: px2rem(-65px);
@@ -682,7 +736,7 @@ body {
 
         &.disable {
           i {
-            background-image: url("./images/btn-like-before.png?__sprite=btn_like");
+            background-image: url("images/btn-like-before.png");
           }
           em {
             @include animation(likeNum 1s ease forwards);
@@ -693,7 +747,7 @@ body {
           display: inline-block;
           width: px2rem(73px);
           height: 100%;
-          background: 0px 50% url("./images/btn-like.png?__sprite=btn_like") no-repeat;
+          background: 0px 50% url("images/btn-like.png") no-repeat;
           background-size: 100% 100%;
           vertical-align: middle;
         }
@@ -747,8 +801,11 @@ body {
 .page-share {
   .shade .share-box {
     .icon-share {
-      background: url("./images/btn-share-1.png") no-repeat;
+      background: url("images/btn-share-1.png") no-repeat;
       background-size: 100% 100%;
+    }
+    .share-content-default{
+      padding-top: px2rem(120px);
     }
   }
   .btn-join {

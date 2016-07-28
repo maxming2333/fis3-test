@@ -18,34 +18,57 @@
   <meta name="renderer" content="webkit">
   <meta name="keywords" content="关键词">
   <meta name="description" content="网站简介">
-  <meta name="apple-mobile-web-app-title" content="夏令营">
-  <title>夏令营</title>
+  <meta name="apple-mobile-web-app-title" content="【豆沙包】夏令营の成长日志">
+  <meta name="x-share-title" content="【豆沙包】夏令营の成长日志">
+  <meta name="x-share-content" content="【豆沙包】夏令营の成长日志<br/>2016年夏天，我在菁果夏令营の欢乐时光......">
+  <meta name="x-share-images" data-img="./images/1.png">
+  <title>【豆沙包】夏令营の成长日志</title>
 
   <script type="text/javascript">
-    ~function (win, doc){
-      var dpr, rem, scale;
-      var docEl = doc.documentElement;
-      var metaEl = doc.querySelector('meta[name="viewport"]');
+//    ~function (win, doc){
+//      var dpr, rem, scale;
+//      var docEl = doc.documentElement;
+//      var metaEl = doc.querySelector('meta[name="viewport"]');
+//
+//      dpr = win.devicePixelRatio || 1;
+//      rem = docEl.clientWidth * dpr / 10;
+//      scale = 1 / dpr;
+//
+//
+//      // 设置viewport，进行缩放，达到高清效果
+//      metaEl.setAttribute('content', 'width=' + dpr * docEl.clientWidth + ', initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+//
+//      // 设置data-dpr属性，留作的css hack之用
+//      docEl.setAttribute('data-dpr', dpr);
+//
+//      // 动态写入样式
+//      docEl.style.fontSize = rem+'px';
+//    }(window, document);
 
-      dpr = win.devicePixelRatio || 1;
-      rem = docEl.clientWidth * dpr / 10;
-      scale = 1 / dpr;
+    (function(doc, win) {
+      var docEl = doc.documentElement,
+          resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+          recalc = function() {
+            var clientWidth = docEl.clientWidth;
+            if (!clientWidth) return;
+            docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+          };
 
+      recalc();
 
-      // 设置viewport，进行缩放，达到高清效果
-      metaEl.setAttribute('content', 'width=' + dpr * docEl.clientWidth + ', initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
-
-      // 设置data-dpr属性，留作的css hack之用
-      docEl.setAttribute('data-dpr', dpr);
-
-      // 动态写入样式
-      docEl.style.fontSize = rem+'px';
-    }(window, document);
+      if (!doc.addEventListener) return;
+      win.addEventListener(resizeEvt, recalc, false);
+      doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
   </script><!--ignore-->
 
-  <link rel="stylesheet" type="text/css" href="page1.scss">
+  <link rel="stylesheet" type="text/css" href="../../common/index/index.scss">
 </head>
 <body>
+<div style="display: none;">
+  <h3>2016年夏天，我在菁果夏令营の欢乐时光......</h3>
+  <img alt="分享图片" src="images/1.png">
+</div>
 <div class="layout">
   <div class="wrap">
     <div class="wrap-1">
@@ -70,10 +93,10 @@
         </div>
         <div class="shade-bottom"></div>
       </div>
-      <img src="images/demo/3.png">
+      <img src="images/3.png">
     </div>
     <div class="wrap-2">
-      <a class="btn-happy" href="../page2/page2.html"><span class="btn-jt"></span>欣赏欢乐时光</a>
+      <a class="btn-happy" href="../page/1.html"><span class="btn-jt"></span>欣赏欢乐时光</a>
     </div>
     <div class="wrap-3">
       <div class="section-1">
@@ -92,9 +115,9 @@
               </div>
               <a class="btn-more" href="javascript:;">更多</a>
               <div class="info-img">
-                <img src="images/demo/1.png">
+                <img src="images/1.png">
               </div>
-              <a class="btn-happy" href="../page2/page2.html"><span class="btn-jt"></span>欣赏欢乐时光</a>
+              <a class="btn-happy" href="../page/1.html"><span class="btn-jt"></span>欣赏欢乐时光</a>
             </div>
           </div>
         </div>
@@ -118,7 +141,7 @@
   </div>
   <div class="pop pop-section-1">
     <div class="pop-img">
-      <img src="./images/demo/2.png">
+      <img src="images/2.png">
     </div>
     <div class="pop-bg"></div>
     <div class="pop-box">
@@ -146,10 +169,10 @@
   </div>
 </div>
 </body>
-<script data-loader="true" type="text/javascript" src="../../common/js/lib/mod.js"></script>
-<script data-framework="true" type="text/javascript" src="../../common/js/lib/zepto.min.js"></script>
-<script data-framework="true" type="text/javascript" src="../../common/js/lib/touch.js"></script>
+<script data-loader="true" type="text/javascript" src="../../../common/js/lib/mod.js"></script>
+<script data-framework="true" type="text/javascript" src="../../../common/js/lib/zepto.min.js"></script>
+<script data-framework="true" type="text/javascript" src="../../../common/js/lib/touch.js"></script>
 <script type="text/javascript">
-  require('./page1');
+  require('./../../common/index/index');
 </script>
 </html>

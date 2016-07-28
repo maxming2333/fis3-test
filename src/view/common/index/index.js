@@ -1,7 +1,7 @@
 $(function (){
   "use strict";
 
-  var POP = require('../../common/js/pop');
+  var POP = require('../../../common/js/pop');
 
   $('.wrap-1 .btn-menu').on('tap', function (){
     var $menu = $(this).siblings('.menu-box');

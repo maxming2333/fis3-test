@@ -1,6 +1,6 @@
-@import "../../common/css/var";
-@import "../../common/css/public";
-@import "../../common/css/pop";
+@import "../../../common/css/var";
+@import "../../../common/css/public";
+@import "../../../common/css/pop";
 
 body {
   color: #fff;
@@ -49,7 +49,7 @@ body {
   width: px2rem(626px);
   height: px2rem(146px);
   margin: 0px auto;
-  background: url("./images/btn-xs.png") no-repeat;
+  background: url("images/btn-xs.png") no-repeat;
   background-size: 100% 100%;
   text-indent: -9999px;
   overflow: hidden;
@@ -60,7 +60,7 @@ body {
     display: block;
     width: px2rem(41px);
     height: px2rem(31px);
-    background: url("./images/btn-jt.png") no-repeat;
+    background: url("images/btn-jt.png") no-repeat;
     background-size: 100% 100%;
     position: absolute;
     top: px2rem(47px);
@@ -77,7 +77,7 @@ body {
   .shade-top {
     width: 100%;
     height: px2rem(294px);
-    background: url("./images/banner-shade-top.png") no-repeat;
+    background: url("images/banner-shade-top.png") no-repeat;
     background-size: 100% 100%;
     position: absolute;
     top: 0px;
@@ -88,7 +88,7 @@ body {
   .shade-bottom {
     width: 100%;
     height: px2rem(356px);
-    background: url("./images/banner-shade-bottom.png") no-repeat;
+    background: url("images/banner-shade-bottom.png") no-repeat;
     background-size: 100% 100%;
     position: absolute;
     bottom: 0px;
@@ -107,7 +107,7 @@ body {
     display: block;
     width: px2rem(283px);
     height: px2rem(66px);
-    background: url("./images/logo.png") no-repeat;
+    background: url("images/logo.png") no-repeat;
     background-size: 100% 100%;
     text-indent: -9999px;
     overflow: hidden;
@@ -121,7 +121,7 @@ body {
     width: px2rem(64px);
     height: px2rem(38px);
     text-indent: -9999px;
-    background: 0px 0px url("./images/icon-hm.png") no-repeat;
+    background: 0px 0px url("images/icon-hm.png") no-repeat;
     background-size: 100% 100%;
     position: absolute;
     top: px2rem(38px);

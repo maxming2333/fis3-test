@@ -18,10 +18,9 @@ module.exports = function (_this){
     var pctY = Math.abs(offsetY) / $(this).height();
 
     // 比较偏移比
-    if(pctY < 0.15){
-      return true;
+    if(pctY > 0.15){
+      _.moveEnd && _.moveEnd(event, offsetY);
     }
-    _.moveEnd && _.moveEnd(event, offsetY);
   });
   
   return _;

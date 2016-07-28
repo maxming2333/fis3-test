@@ -20,10 +20,6 @@ fis.match('/src/**.js', {
   useSameNameRequire: true
 });
 
-fis.match('/src/(**)', {
-  release: '/$1'
-});
-
 fis.match('/src/(**.js)', {
   id: '$1',
   isMod: true
@@ -67,34 +63,26 @@ fis.match('**.{sass,scss}', {
   parser: fis.plugin('node-sass')
 });
 
-fis.match('/src/view/(**.html)', {
-  release: '/html/$1'
-});
+var _release = function (media, url){
 
-var reg = /^\/src\/(.*\.(?!(html$)))/ig;
+  return media.match('/src/(**)', {
+    release: '/$1',
+    url: !url ? null : url+'/$1'
+  })
+  .match('/pkg/src/(**)', {
+    release: '/pkg/$1',
+    url: !url ? null : url+'/pkg/$1'
+  })
+  .match(/^\/src\/(.*(?!(\.html$)))/i, {
+    release: '/public/$1',
+    url: !url ? null : url+'/public/$1'
+  })
+  .match('/src/view/(**.html)', {
+    release: '/html/$1',
+    url: !url ? null : url+'/html/$1'
+  });
 
-fis.match(reg, {
-  release: '/public/$1'
-}, true);
-
-setTimeout(function () {
-
-  console.log(reg);
-
-  var text = '/src/view/page2/touch.js';
-  console.log(text, reg.test(text), text.replace(reg, '/public/'), text.replace(reg, '/public/$1'));
-
-  text = '/src/view/page2/page2.html';
-  console.log(text, reg.test(text), text.replace(reg, '/public/'), text.replace(reg, '/public/$1'));
-
-  text = '/src/view/page2/page2.scss';
-  console.log(text, reg.test(text), text.replace(reg, '/public/'), text.replace(reg, '/public/$1'));
-
-}, 500);
-
-fis.match('/pkg/src/(**)', {
-  release: '/pkg/$1'
-});
+};
 
 fis.match('::package', {
   spriter: fis.plugin('csssprites-group', {
@@ -102,7 +90,7 @@ fis.match('::package', {
     to: './images'
   }),
   prepackager: fis.plugin('replace-attr', {
-    attr : ['data-img', 'data-img-default', 'data-path', 'data-file', 'data-video', 'data-url']
+    attr : ['data-img', 'data-img-default', 'data-path', 'data-file', 'data-video', 'data-url', 'data-src']
   }, 'append'),
   postpackager: fis.plugin('loader', {
     allInOne: {
@@ -115,23 +103,19 @@ fis.match('::package', {
 // Global end
 
 // default media is `dev`
-fis.media('dev')
+_release(fis.media('dev'))
     .match('**', {
+      relative: true,
       useHash: false,
       optimizer: null
     });
 
-fis.media('jg')
+_release(fis.media('jg'), '/activity/summer-camp')
     .match('**', {
       useHash: false,
       relative: false,
+      // optimizer: null,
       domain: 'http://jinglecamps.com'
-    })
-    .match('/src/(**)', {
-      url: '/activity/summer-camp/$1'
-    })
-    .match('/pkg/src/(**)', {
-      url: '/activity/summer-camp/$1'
     });
 
 fis.media('vps')

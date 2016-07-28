@@ -4,12 +4,13 @@
   "description": "Default template for fis scaffold",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "preinstall": "npm install idea-exclude-dir && node ./node_modules/idea-exclude-dir/index.js",
     "start": "node ./node_modules/.bin/fis3 server start -p 3000",
     "fis3": "node ./node_modules/.bin/fis3",
     "release": "node ./node_modules/.bin/fis3 release -cuw",
     "mm": "node ./node_modules/.bin/fis3 server start -p 4000 && node ./node_modules/.bin/fis3 release -cuw"
   },
+  "excludeFolder": ["/log", "/node_modules", "/.idea"],
   "repository": {
     "type": "git",
     "url": "https://github.com/fis-scaffold/default.git"
@@ -25,7 +26,7 @@
     "fis3-hook-commonjs": "^0.1.22",
     "fis3-hook-relative": "^1.0.7",
     "fis3-postpackager-loader": "^1.5.2",
-    "fis3-prepackager-replace-attr": "0.0.5",
+    "fis3-prepackager-replace-attr": "0.1.0",
     "readline-sync": "^1.4.4"
   },
   "keywords": [
